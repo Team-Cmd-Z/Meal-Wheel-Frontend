@@ -20,9 +20,14 @@ Are you tired of wondering what to make for dinner? Bored of the same old recipe
 
 ## MVP Features
 
-(will expand)
+#### Home Page
+- Displays a revolving wheel with sections of various cuisines that can be spun by a user to select a random cuisine. The user can then navigate to the recipes page to view recipes related to the selected cuisine.
 
-Nav bar with spinning wheel and an about page explaining our idea and introducing our team. On the spinning wheel page there will be a button to spin the wheel that selects a category of food and then populates a list of recipes to cook.
+#### Recipes Page
+- This page will render a list of recipes the user can save/favorite to store in their collection. Users can update and delete various recipes from saved collections as well as add notes to each recipe for future use.
+
+#### About Us
+- Brief summaries of each team members experience, education, and goals.
 
 ## Planning Process + Tools
 
