@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import './App.css';
+import Home from './Components/Home';
+
 
 class App extends React.Component {
   render() {
@@ -9,7 +11,7 @@ class App extends React.Component {
       <div className="page-container">
       <div className='content-wrap'>
         <Header />
-        <h2>Hello World</h2>
+        <Home />
         </div>
         <Footer />
       </div>

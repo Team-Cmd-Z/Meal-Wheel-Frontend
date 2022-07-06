@@ -1,0 +1,10 @@
+.faq-parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 2rem;
+  grid-row-gap: 0px;
+  margin: 8rem 5rem;
+  }
+  .div1 { grid-area: 1 / 2 / 2 / 3;}
+  .div2 { grid-area: 1 / 1 / 2 / 2;}
