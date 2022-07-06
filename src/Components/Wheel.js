@@ -17,12 +17,14 @@ export default class Wheel extends React.Component {
         this.props.onSelectItem(selectedItem);
       }
       this.setState({ selectedItem });
+      this.props.getSixMeals(selectedItem);
       this.props.updateCuisine(selectedItem);
     } else {
       this.setState({ selectedItem: null });
       setTimeout(this.selectItem, 500);
     }
-  }
+  } 
+
 
   render() {
     const { selectedItem } = this.state;

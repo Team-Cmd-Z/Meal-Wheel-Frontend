@@ -12,14 +12,13 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      cuisines: ['African', 'American', 'Cajun', 'French', 'Italian', 'Jewish',
-        'Mediterranean', 'Mexican', 'Southern', 'Thai', 'Caribbean', 'Chinese'],
-    }
-  }
+  //   this.state = {
+  //     cuisines: ['African', 'American', 'Cajun', 'French', 'Italian', 'Jewish', 'Mediterranean', 'Mexican', 'Southern', 'Thai', 'Caribbean', 'Chinese'],
+  //   }
+  // }
 
   render() {
     return (
