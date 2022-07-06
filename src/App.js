@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import './App.css';
@@ -10,6 +11,16 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      cuisines: ['African', 'American', 'Cajun', 'French', 'Italian', 'Jewish',
+        'Mediterranean', 'Mexican', 'Southern', 'Thai', 'Caribbean', 'Chinese'],
+    }
+  }
+
   render() {
     return (
       <Router>
