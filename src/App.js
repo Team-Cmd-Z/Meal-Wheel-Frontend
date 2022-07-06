@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import './App.css';
@@ -6,6 +7,7 @@ import Home from './Components/Home';
 
 
 class App extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -15,7 +17,6 @@ class App extends React.Component {
     }
   }
 
-  
   render() {
     return (
       <div className="page-container">
