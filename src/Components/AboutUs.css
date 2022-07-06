@@ -1,0 +1,94 @@
+#aboutSection {
+background-color:var(--secondary-white);
+}
+
+#Pattern {
+  position: relative;
+  border-radius: 8px;
+}
+
+#about-container {
+  max-width: 80vw;
+  margin: auto;
+}
+
+#about-team {
+  position: absolute !important;
+  top: 150px !important;
+  left: 750px;
+  color: aliceblue;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+article {
+  margin:0 auto;
+  background-color: aliceblue;
+  margin-top: 50px;
+  border-radius: 8px;
+  width: 1100px;
+  display: flex; 
+  margin-bottom: 50px;
+  height: fit-content;
+  padding-bottom: 20px;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  margin-top: 100px;
+  color:var(--primary-darkBlue);
+  font-size: xx-large;
+  text-align: center;
+}
+
+.bio {
+  width: 100%;
+  border-radius: 35%;
+  text-align: left;
+}
+  
+#name {
+  color:var(--primary-darkBlue);
+  font-size: x-large;
+  background-color: none;
+}
+
+h3:not(footer h3) {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color:var(--primary-darkBlue);
+  font-size: x-large;
+  max-width: fit-content;
+  margin-left: 25px;
+  margin-top: 35px;
+}
+
+p:not(footer p){
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  margin-left: 30px;
+  margin-right: 10px;
+  color:var(--primary-darkBlue);
+}
+
+#headshot{
+  float: left;
+  width: 195px;
+  height: 195px;
+  stroke: var(--primary-lightBlue);
+  margin: 5px;
+  border-radius: 8px;
+  padding:22px;
+}
+
+#github {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  margin-left: 5px;
+  font-size: large;
+  text-decoration: none;
+}

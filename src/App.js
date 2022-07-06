@@ -4,6 +4,10 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import './App.css';
 import Home from './Components/Home';
+import AboutUs from './Components/AboutUs';
+import Faq from './Components/Faq';
+import SavedRecipes from './Components/SavedRecipes';
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 
 
 class App extends React.Component {
@@ -19,13 +23,20 @@ class App extends React.Component {
 
   render() {
     return (
+      <Router>
       <div className="page-container">
-        <div className='content-wrap'>
-          <Header />
-          <Home cuisines={this.state.cuisines} />
+      <div className='content-wrap'>
+        <Header />
+        <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/AboutUs' element={<AboutUs />}></Route>
+        <Route path='/Faq' element={<Faq />}></Route>
+        <Route path='/SavedRecipes' element={<SavedRecipes/>}></Route>
+        </Routes>
         </div>
         <Footer />
       </div>
+      </Router>
     );
   }
 }
