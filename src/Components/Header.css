@@ -1,0 +1,23 @@
+#navbar-link:hover{
+  color: burlywood;
+}
+
+#recipe-page{
+  font-weight: 600;
+  color:black;
+}
+
+#recipe-page:hover{
+  border-bottom: 5px burlywood solid;
+  padding-bottom: 0.5rem;
+}
+
+#login-button{
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+#login-button:hover{
+  box-shadow: 1px 0px 10px 0px #000000;
+}
