@@ -10,21 +10,19 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
-      title: '',
-      imageUrl: '',
-      ingredients: [],
-      directions: '',
-      notes: ''
+      cuisines: ['African', 'American', 'Cajun', 'French', 'Italian', 'Jewish',
+        'Mediterranean', 'Mexican', 'Southern', 'Thai', 'Caribbean', 'Chinese'],
     }
   }
 
   render() {
     return (
       <div className="page-container">
-      <div className='content-wrap'>
-        <Header />
-        <Home />
+        <div className='content-wrap'>
+          <Header />
+          <Home cuisines={this.state.cuisines} />
         </div>
         <Footer />
       </div>
