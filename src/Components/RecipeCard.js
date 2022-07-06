@@ -4,7 +4,7 @@ import { BiCaretDown } from 'react-icons/bi';
 
 class RecipeCard extends React.Component{
   render(){
-    console.log(this.props.obj);
+    // console.log(this.props.obj);
     return(
       <>
         <Card style={{ width: '18rem' }}>
