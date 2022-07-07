@@ -5,6 +5,8 @@ import Wheel from './Wheel.js';
 import './Home.css';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import { AiOutlineStar, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai';
 
 class Home extends React.Component {
   constructor(props) {
@@ -17,7 +19,7 @@ class Home extends React.Component {
       chosenRecipe: {},
       showModal: false,
       modal: {},
-      recipeToDisplay: {}
+      recipeToDisplay: {},
     }
   }
 
@@ -44,19 +46,17 @@ class Home extends React.Component {
     })
   }
   getSixMeals = async (index) => {
-      try {
-        let cuisine = this.state.cuisines[index];
-        let url = `${process.env.REACT_APP_SERVER}/recipes?cuisine=${cuisine}`;
-        console.log(cuisine);
-        let receivedMeals = await axios.get(url);
-        this.setState({
-          ...this.state,
-          mealsArr: receivedMeals.data,
-        })
-        console.log(receivedMeals.data);
-      } catch (error) {
-        console.log('Oops')
-      }
+    try {
+      let cuisine = this.state.cuisines[index];
+      let url = `${process.env.REACT_APP_SERVER}/recipes?cuisine=${cuisine}`;
+      let receivedMeals = await axios.get(url);
+      this.setState({
+        ...this.state,
+        mealsArr: receivedMeals.data,
+      })
+    } catch (error) {
+      console.log('Oops')
+    }
   }
 
   getMealRecipe = async (recipe) => {
@@ -75,11 +75,32 @@ class Home extends React.Component {
     }
   }
 
-  render() {
+  handleAddToCollection = () => {
+    //   title: { type: String, required: true },
+    // imageUrl: { type: String, required: true },
+    // ingredients: { type: Array, required: true },
+    // directions: { type: String, required: true },
+    // notes: { type: String, required: false }
 
-    // console.log(this.state.selectedCuisine);
-    // console.log(this.state.receivedMeals);
-    console.log(this.state.showModal);
+    try {
+      console.log(this.state.chosenRecipe);
+      console.log(this.state.recipeToDisplay);
+      let chosenObj = {
+        title: this.state.chosenRecipe.title,
+        imageUrl: this.state.chosenRecipe.image,
+        ingredients: this.state.recipeToDisplay.ingredients,
+        directions: this.state.recipeToDisplay.instructions,
+        notes: '',
+      }
+      let url = `${process.env.REACT_APP_SERVER}/recipes`;
+      console.log(url);
+      axios.post(url, chosenObj);
+    } catch (error) {
+      console.log(`Oh snap! ${error.message}`);
+    }
+  }
+
+  render() {
     return (
       <div className='home-container'>
         <div id='home-splash'>
@@ -88,26 +109,31 @@ class Home extends React.Component {
             cuisines={this.state.cuisines}
             updateCuisine={this.getSelectedCuisine}
             getSixMeals={this.getSixMeals}
-            />
+          />
         </div>
         <section>
-          {this.state.mealsArr && <>
-            <h1>Try one of these recipes</h1>
-            <div className='parent'>
-              {this.state.mealsArr.map((recipe, i) => {
-                return (
-                  <div key={i} className={`div${i + 1}`}>
-                    <RecipeCard
-                      obj={recipe}
-                      handleOnShowModal={this.handleOnShowModal}
-                      mealsArr={this.state.mealsArr}
+          {
+            this.state.mealsArr.length ?
+            <>
+              <h1>Try one of these recipes</h1>
+              <div className='parent'>
+                {this.state.mealsArr.map((recipe, i) => {
+                  return (
+                    <div key={i} className={`div${i + 1}`}>
+                      <RecipeCard
+                        obj={recipe}
+                        saved={false}
+                        handleOnShowModal={this.handleOnShowModal}
+                        mealsArr={this.state.mealsArr}
                       // handleHide={this.handleOnHideModal}
-                    />
-                  </div>
-                )
-              })}
-            </div>
-          </>}
+                      />
+                    </div>
+                  )
+                })}
+              </div>
+            </> 
+            : <h1>Click SPIN to find recipes</h1>
+            }
         </section>
         <Faq />
         <Modal show={this.state.showModal} onHide={this.handleOnHideModal}>
@@ -115,9 +141,20 @@ class Home extends React.Component {
             <Modal.Title>{this.state.recipeToDisplay.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <img src={this.state.recipeToDisplay.image} alt={this.state.recipeToDisplay.title}/>
-              <div>{this.state.recipeToDisplay.ingredients}</div>
-              <div>{this.state.recipeToDisplay.instructions}</div>
+            <img src={this.state.recipeToDisplay.image} alt={this.state.recipeToDisplay.title} />
+            <div>{this.state.recipeToDisplay.ingredients}</div>
+            <div>{this.state.recipeToDisplay.instructions}</div>
+            <ul className='modal-icons'>
+              <li className='icon' onClick={this.handleAddToCollection}>
+                <button><AiOutlineStar /></button>
+              </li>
+              <li className='icon' onClick={this.handleAddToCollection}>
+                <button><AiOutlineHeart /></button>
+              </li>
+              <li className='icon' onClick={this.handleAddToCollection}>
+                <button><AiOutlineShareAlt /></button>
+              </li>
+            </ul>
           </Modal.Body>
         </Modal>
       </div>
