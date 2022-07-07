@@ -23,9 +23,7 @@ class Header extends React.Component {
         </Navbar>
         <header>
           <h4>The Meal Wheel™</h4>
-          {/* <p id="pitch">Don't know what to make for dinner? Bored of the same old recipes? Let Meal-Wheel™ take those concerns off your plate!</p> */}
         </header>
-
       </>
     );
   }

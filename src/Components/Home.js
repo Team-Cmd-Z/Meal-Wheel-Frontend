@@ -5,7 +5,6 @@ import Wheel from './Wheel.js';
 import './Home.css';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import { AiOutlineStar, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai';
 
 class Home extends React.Component {
@@ -89,7 +88,7 @@ class Home extends React.Component {
         title: this.state.chosenRecipe.title,
         imageUrl: this.state.chosenRecipe.image,
         ingredients: this.state.recipeToDisplay.ingredients,
-        directions: this.state.recipeToDisplay.instructions,
+        instructions: this.state.recipeToDisplay.instructions,
         notes: '',
       }
       let url = `${process.env.REACT_APP_SERVER}/recipes`;
