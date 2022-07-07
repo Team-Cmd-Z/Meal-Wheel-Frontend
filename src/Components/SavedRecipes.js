@@ -1,19 +1,34 @@
 import React from 'react';
 import RecipeCard from './RecipeCard';
-import data from '../data.json';
 import axios from 'axios';
+import Modal from 'react-bootstrap/Modal';
 
 
 class SavedRecipes extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       data: [],
+      modalToShow: null,
     }
   }
 
   componentDidMount() {
     this.getSavedRecipes();
+  }
+
+  handleOnShowModal = (id) => {
+    this.setState({
+      ...this.state,
+      modalToShow: id,
+    })
+  }
+
+  handleOnHideModal = () => {
+    this.setState({
+      ...this.state,
+      modalToShow: null,
+    })
   }
 
   // get request to render data from database
@@ -46,20 +61,32 @@ class SavedRecipes extends React.Component {
   render() {
     return (
       <>
-      <section>
+        <section>
           <h1>Try one of these recipes</h1>
           <div className='parent'>
             {this.state.data.map((recipe, i) => {
-              console.log(recipe);
               return (
-                <div className={`div${i + 1}`}>
-                  <RecipeCard
-                    obj={recipe}
-                    saved={true}
-                    onDelete={this.handleDelete}
-                  />
+                <div key={recipe._id}>
+                  <div className={`div${i + 1}`}>
+                    <RecipeCard
+                      obj={recipe}
+                      saved={true}
+                      onDelete={this.handleDelete}
+                      handleOnShowModal={() => this.handleOnShowModal(recipe._id)}
+                    />
+                  </div>
+                  <Modal show={this.state.modalToShow === recipe._id} onHide={this.handleOnHideModal}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>{recipe.title}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <img src={recipe.imageUrl} alt={recipe.title} />
+                      <div>{recipe.ingredients}</div>
+                      <div>{recipe.instructions}</div>
+                    </Modal.Body>
+                  </Modal>
                 </div>
-              )
+              );
             })}
           </div>
         </section>
