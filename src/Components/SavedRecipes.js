@@ -45,6 +45,23 @@ class SavedRecipes extends React.Component {
     }
   }
 
+  updateRecipe = async (recipeUpdate) => {
+    try {
+      let url = `${process.env.REACT_APP_SERVER}/recipes/${recipeUpdate._id}`;
+      let updatedRecipe = await axios.put(url, recipeUpdate);
+      let updatedRecipeArray = this.state.data.map(currentRecipe => {
+        return currentRecipe._id === recipeUpdate._id
+          ? updatedRecipe.data
+          : currentRecipe
+      });
+      this.setState({
+        data: updatedRecipeArray
+      });
+    } catch (error) {
+      console.log('we have an error: ', error.response.data);
+    }
+  }
+
   handleDelete = async (id) => {
     try {
       let url = `${process.env.REACT_APP_SERVER}/recipes/${id}`;
@@ -69,6 +86,8 @@ class SavedRecipes extends React.Component {
                 <div key={recipe._id}>
                   <div className={`div${i + 1}`}>
                     <RecipeCard
+                      updateRecipe = {this.updateRecipe}
+                      getSavedRecipes = {this.getSavedRecipes}
                       obj={recipe}
                       saved={true}
                       onDelete={this.handleDelete}
