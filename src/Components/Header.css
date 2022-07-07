@@ -1,4 +1,4 @@
-#navbar-link:hover{
+/* #navbar-link:hover{
   color: burlywood;
 }
 
@@ -10,7 +10,7 @@
 #recipe-page:hover{
   border-bottom: 5px burlywood solid;
   padding-bottom: 0.5rem;
-}
+} */
 
 #login-button{
   background-color: black;
@@ -22,7 +22,38 @@
   box-shadow: 1px 0px 10px 0px #000000;
 }
 
-a {
-  padding-left: 20px;
+a:link {
+  padding: 0 20px;
   text-decoration: none;
+  color: green;
 }
+
+a:visited {
+  color: black;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 900;
+  letter-spacing: 3pt;
+}
+
+header h4 {
+  font-size: 6vw;
+  color: white;
+  font-family: 'Coiny', cursive;
+}
+
+#pitch {
+  margin: auto 300px;
+  text-align: center;
+  letter-spacing: 1pt;
+}
+header {
+  background: url("/public/images/Pattern.png") no-repeat center;
+  height: 200px;
+}
+

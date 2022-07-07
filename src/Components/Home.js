@@ -13,7 +13,7 @@ class Home extends React.Component {
 
     this.state = {
       selectedCuisine: null,
-      cuisines: ['American', 'Cajun', 'French', 'Italian', 'Jewish', 'Japanese', 'Mediterranean', 'Mexican', 'Southern', 'Thai', 'Caribbean', 'Chinese'],
+      cuisines: ['American', 'Spanish', 'French', 'Italian', 'Jewish', 'Japanese', 'Mediterranean', 'Mexican', 'Indian', 'Thai', 'Caribbean', 'Chinese'],
       mealsArr: [],
       chosenRecipe: {},
       showModal: false,
@@ -103,36 +103,37 @@ class Home extends React.Component {
     return (
       <div className='home-container'>
         <div id='home-splash'>
-          <img id='homeSplash-img' src='./images/homeSplash.png' alt='vegetable plate' />
+          <p>Don't know what to cook for dinner? Bored of the same old recipes? Let Meal-Wheel™ take those concerns off your plate!</p>
           <Wheel
             cuisines={this.state.cuisines}
             updateCuisine={this.getSelectedCuisine}
             getSixMeals={this.getSixMeals}
           />
+
         </div>
         <section>
           {
             this.state.mealsArr.length ?
-            <>
-              <h1>Try one of these recipes</h1>
-              <div className='parent'>
-                {this.state.mealsArr.map((recipe, i) => {
-                  return (
-                    <div key={i} className={`div${i + 1}`}>
-                      <RecipeCard
-                        obj={recipe}
-                        saved={false}
-                        handleOnShowModal={this.handleOnShowModal}
-                        mealsArr={this.state.mealsArr}
-                      // handleHide={this.handleOnHideModal}
-                      />
-                    </div>
-                  )
-                })}
-              </div>
-            </>
-            : <h1>Click SPIN to find recipes</h1>
-            }
+              <>
+                <h1>Try one of these recipes</h1>
+                <div className='parent'>
+                  {this.state.mealsArr.map((recipe, i) => {
+                    return (
+                      <div key={i} className={`div${i + 1}`}>
+                        <RecipeCard
+                          obj={recipe}
+                          saved={false}
+                          handleOnShowModal={this.handleOnShowModal}
+                          mealsArr={this.state.mealsArr}
+                        // handleHide={this.handleOnHideModal}
+                        />
+                      </div>
+                    )
+                  })}
+                </div>
+              </>
+              : <h1>Click SPIN to find recipes</h1>
+          }
         </section>
         <Faq />
         <Modal show={this.state.showModal} onHide={this.handleOnHideModal}>
@@ -140,17 +141,28 @@ class Home extends React.Component {
             <Modal.Title>{this.state.recipeToDisplay.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img src={this.state.recipeToDisplay.image} alt={this.state.recipeToDisplay.title} />
-            <div>{this.state.recipeToDisplay.ingredients}</div>
+            <img
+              src={this.state.recipeToDisplay.image}
+              alt={this.state.recipeToDisplay.title}
+            />
+            <div>
+              <ul className='ingredients'>
+                {this.state.recipeToDisplay.ingredients &&
+                  this.state.recipeToDisplay.ingredients.map((element, index) => (<li key={index}>{element}</li>))};
+              </ul>
+            </div>
             <div>{this.state.recipeToDisplay.instructions}</div>
             <ul className='modal-icons'>
-              <li className='icon' onClick={this.handleAddToCollection}>
+              <li className='icon'
+                onClick={this.handleAddToCollection}>
                 <button><AiOutlineStar /></button>
               </li>
-              <li className='icon' onClick={this.handleAddToCollection}>
+              <li className='icon'
+                onClick={this.handleAddToCollection}>
                 <button><AiOutlineHeart /></button>
               </li>
-              <li className='icon' onClick={this.handleAddToCollection}>
+              <li className='icon'
+                onClick={this.handleAddToCollection}>
                 <button><AiOutlineShareAlt /></button>
               </li>
             </ul>

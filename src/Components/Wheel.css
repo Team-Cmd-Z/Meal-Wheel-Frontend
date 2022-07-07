@@ -1,9 +1,9 @@
 :root {
   --wheel-font: 'Lato', 'Quicksand', sans-serif;
   --wheel-size: 25rem;
-  --wheel-slice-spacing: 50px;
+  --wheel-slice-spacing: 40px;
   --wheel-border-size: 5px;
-  --wheel-color: #da3768;
+  --wheel-color: #b2bf6e;
   --neutral-color: white;
   --PI: 3.14159265358979;
   --nb-item: 0;
@@ -21,7 +21,6 @@
   box-sizing: content-box;
   width: calc(var(--wheel-size) + 2 * var(--wheel-border-size));
   height: calc(var(--wheel-size) + 2 * var(--wheel-border-size));
-  padding: 3px;
   margin: auto;
   background-color: var(--neutral-color);
   border: solid var(--wheel-color) 3px;
@@ -89,6 +88,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
+  background-color: white;
 }
 
 /* Element sur la roue */
