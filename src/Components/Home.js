@@ -14,34 +14,38 @@ class Home extends React.Component {
       selectedCuisine: null,
       cuisines: ['American', 'Cajun', 'French', 'Italian', 'Jewish', 'Japanese', 'Mediterranean', 'Mexican', 'Southern', 'Thai', 'Caribbean', 'Chinese'],
       mealsArr: [],
-      chosenRecipe: [],
+      chosenRecipe: {},
       showModal: false,
-      modal: {}
+      modal: {},
+      recipeToDisplay: {}
     }
   }
 
   handleOnHideModal = () => {
     this.setState({
+      ...this.state,
       showModal: false,
       // modal: {}
     });
   };
 
-  handleOnShowModal = () => {
+  handleOnShowModal = (recipe) => {
     this.setState({
-      showModal: true,
+      ...this.state,
+      chosenRecipe: recipe,
       modal: {
-        title: this.state.mealsArr[0].title,
-        imageUrl: this.state.mealsArr[0].imageUrl,
+        // title: this.state.chosenRecipe.title,
+        // image: this.state.chosenRecipe.image,
+        // ingredients: this.state.chosenRecipe.ingredients,
+        // directions: this.state.chosenRecipe.directions
       }
     });
-    // this.setState({
-    //   showModal: true,
-    // });
+    this.getMealRecipe(recipe)
   };
 
   getSelectedCuisine = (cuisine) => {
     this.setState({
+      ...this.state,
       selectedCuisine: cuisine
     })
   }
@@ -52,6 +56,7 @@ class Home extends React.Component {
         console.log(cuisine);
         let receivedMeals = await axios.get(url);
         this.setState({
+          ...this.state,
           mealsArr: receivedMeals.data,
         })
         console.log(receivedMeals.data);
@@ -60,19 +65,21 @@ class Home extends React.Component {
       }
   }
 
-  // getMealRecipe = async (index) => {
-  //   try {
-  //     let recipeId = 643362;// get ID number from click event
-  //     let url = `${process.env.REACT_APP_SERVER}/recipelist?recipeId=${recipeId}`;
-  //     let receivedRecipe = await axios.get(url);
-  //     this.setState({
-  //       chosenRecipe: receivedRecipe.data,
-  //     })
-  //     console.log(receivedRecipe.data);
-  //   } catch (error) {
-  //     console.log('Oops')
-  //   }
-  // }
+  getMealRecipe = async (recipe) => {
+    try {
+      let recipeId = recipe.id;
+      let url = `${process.env.REACT_APP_SERVER}/recipelist?recipeId=${recipeId}`;
+      let receivedRecipeObj = await axios.get(url);
+      this.setState({
+        ...this.state,
+        recipeToDisplay: receivedRecipeObj.data,
+        showModal: true,
+      })
+      console.log(receivedRecipeObj.data);
+    } catch (error) {
+      console.log('Oops')
+    }
+  }
 
   render() {
 
@@ -111,11 +118,12 @@ class Home extends React.Component {
         <Faq />
         <Modal show={this.state.showModal} onHide={this.handleOnHideModal}>
           <Modal.Header closeButton>
-            <Modal.Title>{this.state.modal.title}</Modal.Title>
+            <Modal.Title>{this.state.recipeToDisplay.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <img src={this.state.modal.imageUrl} alt={this.state.modal.title}/>
-              {/* <div>{this.state.modal.title}</div> */}
+              <img src={this.state.recipeToDisplay.image} alt={this.state.recipeToDisplay.title}/>
+              <div>{this.state.recipeToDisplay.ingredients}</div>
+              <div>{this.state.recipeToDisplay.instructions}</div>
           </Modal.Body>
         </Modal>
       </div>
