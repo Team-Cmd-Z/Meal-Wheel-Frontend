@@ -7,6 +7,10 @@ import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { AiOutlineStar, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai';
+import {withAuth0} from '@auth0/auth0-react'
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
+// import Profile from './Components/Profile';
 
 class Home extends React.Component {
   constructor(props) {
@@ -22,6 +26,8 @@ class Home extends React.Component {
       recipeToDisplay: {},
     }
   }
+
+
 
   handleOnHideModal = () => {
     this.setState({
@@ -47,13 +53,29 @@ class Home extends React.Component {
   }
   getSixMeals = async (index) => {
     try {
-      let cuisine = this.state.cuisines[index];
-      let url = `${process.env.REACT_APP_SERVER}/recipes?cuisine=${cuisine}`;
-      let receivedMeals = await axios.get(url);
-      this.setState({
+      let cuisine = this.state.selectedCuisine;
+      console.log(this.props.auth0.isAuthenticated);
+      if (this.props.auth0.isAuthenticated) {
+        const res = await this.props.auth0.getIdTokenClaims()
+        const jwt = res.__raw
+        const config = {
+          method: 'get',
+          baseURL: process.env.REACT_APP_SERVER,
+          url: `./recipes?cuisine=${cuisine}`,
+          headers: {"Authorization": `Bearer ${jwt}`}
+        }
+        console.log(config)
+        let recievedMeals = await axios(config)
+        console.log(recievedMeals)
+
+        // let cuisine = this.state.cuisines[index];
+        // let url = `${process.env.REACT_APP_SERVER}/recipes?cuisine=${cuisine}`;
+        // let receivedMeals = await axios.get(url);
+        this.setState({
         ...this.state,
-        mealsArr: receivedMeals.data,
+        mealsArr: recievedMeals.data,
       })
+    }
     } catch (error) {
       console.log('Oops')
     }
@@ -89,7 +111,7 @@ class Home extends React.Component {
         title: this.state.chosenRecipe.title,
         imageUrl: this.state.chosenRecipe.image,
         ingredients: this.state.recipeToDisplay.ingredients,
-        directions: this.state.recipeToDisplay.instructions,
+        instructions: this.state.recipeToDisplay.instructions,
         notes: '',
       }
       let url = `${process.env.REACT_APP_SERVER}/recipes`;
@@ -111,7 +133,10 @@ class Home extends React.Component {
             getSixMeals={this.getSixMeals}
           />
         </div>
-        <section>
+        {
+          this.props.auth0.isAuthenticated?
+            <>
+            <section>
           {
             this.state.mealsArr.length ?
             <>
@@ -135,6 +160,36 @@ class Home extends React.Component {
             : <h1>Click SPIN to find recipes</h1>
             }
         </section>
+            </>
+          :<h2>Please Login to your account.</h2>
+        }
+        {
+          this.props.auth0.isAuthenticated?<LogoutButton/>:<LoginButton/>
+        }
+        {/* <section>
+          {
+            this.state.mealsArr.length ?
+            <>
+              <h1>Try one of these recipes</h1>
+              <div className='parent'>
+                {this.state.mealsArr.map((recipe, i) => {
+                  return (
+                    <div key={i} className={`div${i + 1}`}>
+                      <RecipeCard
+                        obj={recipe}
+                        saved={false}
+                        handleOnShowModal={this.handleOnShowModal}
+                        mealsArr={this.state.mealsArr}
+                      // handleHide={this.handleOnHideModal}
+                      />
+                    </div>
+                  )
+                })}
+              </div>
+            </> 
+            : <h1>Click SPIN to find recipes</h1>
+            }
+        </section> */}
         <Faq />
         <Modal show={this.state.showModal} onHide={this.handleOnHideModal}>
           <Modal.Header closeButton>
@@ -162,4 +217,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default withAuth0(Home);
