@@ -13,14 +13,19 @@ class Header extends React.Component {
           <Container>
             <Navbar.Brand href='#home'>LOGO</Navbar.Brand>
             <Nav>
-            <Link to="/">Home</Link>
-            <Link to="/AboutUs">About Us</Link>
-            <Link to="/Faq">FAQ</Link>
-            <Link to="/SavedRecipes">Save Recipes</Link>
-          </Nav>
-          <Button id='login-button'>Login</Button>
-        </Container>
-      </Navbar>
+              <Link to="/">Home</Link>
+              <Link to="/AboutUs">About Us</Link>
+              <Link to="/Faq">FAQ</Link>
+              <Link to="/SavedRecipes">Saved Recipes</Link>
+            </Nav>
+            <Button id='login-button'>Login</Button>
+          </Container>
+        </Navbar>
+        <header>
+          <h4>The Meal Wheel™</h4>
+          {/* <p id="pitch">Don't know what to make for dinner? Bored of the same old recipes? Let Meal-Wheel™ take those concerns off your plate!</p> */}
+        </header>
+
       </>
     );
   }
