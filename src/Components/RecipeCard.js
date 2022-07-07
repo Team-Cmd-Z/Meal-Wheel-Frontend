@@ -11,6 +11,7 @@ class RecipeCard extends React.Component{
           <Card.Body>
             <Card.Title>{this.props.obj.title}</Card.Title>
             <Button onClick={() => this.props.handleOnShowModal(this.props.obj)}>See Recipe</Button>
+            <Button onClick={() => this.saveRecipe(this.props.obj)}>Save</Button>
           </Card.Body>
         </Card>
       </>
