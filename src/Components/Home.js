@@ -35,12 +35,6 @@ class Home extends React.Component {
     this.setState({
       ...this.state,
       chosenRecipe: recipe,
-      modal: {
-        // title: this.state.chosenRecipe.title,
-        // image: this.state.chosenRecipe.image,
-        // ingredients: this.state.chosenRecipe.ingredients,
-        // directions: this.state.chosenRecipe.directions
-      }
     });
     this.getMealRecipe(recipe)
   };
