@@ -8,7 +8,7 @@ export default class Wheel extends React.Component {
       selectedItem: null,
     };
     this.selectItem = this.selectItem.bind(this);
-  }
+  };
 
   selectItem() {
     if (this.state.selectedItem === null) {
@@ -23,13 +23,13 @@ export default class Wheel extends React.Component {
       this.setState({ selectedItem: null });
       setTimeout(this.selectItem, 500);
     }
-  } 
+  };
 
 
   render() {
     const { selectedItem } = this.state;
     const { cuisines } = this.props;
-    console.log(this.state.selectedItem);
+    // console.log(this.state.selectedItem);
     const wheelVars = {
       '--nb-item': cuisines.length,
       '--selected-item': selectedItem,
