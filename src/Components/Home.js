@@ -20,7 +20,7 @@ class Home extends React.Component {
 
     this.state = {
       selectedCuisine: null,
-      cuisines: ['American', 'Spanish', 'French', 'Italian', 'Jewish', 'Japanese', 'Mediterranean', 'Mexican', 'Indian', 'Thai', 'Caribbean', 'Chinese'],
+      cuisines: ['African', 'British', 'French', 'Cajun', 'Jewish', 'Nordic', 'Mediterranean', 'Mexican', 'Greek', 'Korean', 'Caribbean', 'Irish'],
       mealsArr: [],
       chosenRecipe: {},
       showModal: false,
@@ -167,26 +167,26 @@ class Home extends React.Component {
         <section>
           {
             this.state.mealsArr.length ?
-            <>
-              <h1>Try one of these recipes</h1>
-              <div className='parent'>
-                {this.state.mealsArr.map((recipe, i) => {
-                  return (
-                    <div key={i} className={`div${i + 1}`}>
-                      <RecipeCard
-                        obj={recipe}
-                        saved={false}
-                        handleOnShowModal={this.handleOnShowModal}
-                        mealsArr={this.state.mealsArr}
-                      // handleHide={this.handleOnHideModal}
-                      />
-                    </div>
-                  )
-                })}
-              </div>
-            </> 
-            : <h1>Click SPIN to find recipes</h1>
-            }
+              <>
+                <h1>Try one of these recipes</h1>
+                <div className='parent'>
+                  {this.state.mealsArr.map((recipe, i) => {
+                    return (
+                      <div key={i} className={`div${i + 1}`}>
+                        <RecipeCard
+                          obj={recipe}
+                          saved={false}
+                          handleOnShowModal={this.handleOnShowModal}
+                          mealsArr={this.state.mealsArr}
+                        // handleHide={this.handleOnHideModal}
+                        />
+                      </div>
+                    )
+                  })}
+                </div>
+              </>
+              : <h1>Click SPIN to find recipes</h1>
+          }
         </section>
         <Faq />
         <Modal show={this.state.showModal} onHide={this.handleOnHideModal}>
