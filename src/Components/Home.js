@@ -5,6 +5,7 @@ import Wheel from './Wheel.js';
 import './Home.css';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
+import Image from 'react-bootstrap/Image';
 import { AiOutlineStar, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai';
 
 class Home extends React.Component {
@@ -103,13 +104,13 @@ class Home extends React.Component {
     return (
       <div className='home-container'>
         <div id='home-splash'>
-          <p>Don't know what to cook for dinner? Bored of the same old recipes? Let Meal-Wheel™ take those concerns off your plate!</p>
+          <img id="taco" src="../images/fork.png" alt="taco" />
           <Wheel
             cuisines={this.state.cuisines}
             updateCuisine={this.getSelectedCuisine}
             getSixMeals={this.getSixMeals}
           />
-
+          <p>Don't know what to cook for dinner? Bored of the same old recipes? Let Meal-Wheel™ take those concerns off your plate!</p>
         </div>
         <section>
           {
@@ -141,7 +142,7 @@ class Home extends React.Component {
             <Modal.Title>{this.state.recipeToDisplay.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img
+            <Image
               src={this.state.recipeToDisplay.image}
               alt={this.state.recipeToDisplay.title}
             />
