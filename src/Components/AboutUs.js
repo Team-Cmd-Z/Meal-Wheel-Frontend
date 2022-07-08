@@ -16,7 +16,7 @@ class AboutUs extends React.Component {
                 <img id="headshot" src="images/Elizabeth.png" alt="description"/>
                 <section class="bio">
                   <h3 id="name">Elizabeth Beale</h3>
-                  <p>Bio goes here</p>
+                  <p>Hello! I’m Elizabeth, an aspiring software developer in Seattle. Before entering the tech industry, I spent two years in law school, where I enjoyed writing legal arguments, but realized that I wanted to use that logic to build things rather than argue with lawyers. I have an eye for design, and I love creating clean, intuitive interfaces that are visually appealing. Over the next months, I’m excited to use my programming skills to build websites for my friends in the Seattle artist community.</p>
                   <h3>Github</h3>
                   <a id="github" href="https://github.com/egbeale">My GitHub</a>
                 </section>

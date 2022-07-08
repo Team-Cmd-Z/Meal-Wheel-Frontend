@@ -5,6 +5,7 @@ import Wheel from './Wheel.js';
 import './Home.css';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
+import Image from 'react-bootstrap/Image';
 import { AiOutlineStar, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai';
 import { parseInstructions } from './utility';
 import { withAuth0 } from '@auth0/auth0-react'
@@ -121,13 +122,13 @@ class Home extends React.Component {
     return (
       <div className='home-container'>
         <div id='home-splash'>
-          <p>Don't know what to cook for dinner? Bored of the same old recipes? Let Meal-Wheel™ take those concerns off your plate!</p>
+          <img id="forks" src="../images/2forks.png" alt="forks" />
           <Wheel
             cuisines={this.state.cuisines}
             updateCuisine={this.getSelectedCuisine}
             getSixMeals={this.getSixMeals}
           />
-
+          <img id="spoons" src="../images/2spoons.png" alt="spoons" />
         </div>
         {/* {
           this.props.auth0.isAuthenticated ?
@@ -193,7 +194,7 @@ class Home extends React.Component {
             <Modal.Title>{this.state.recipeToDisplay.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img
+            <Image
               src={this.state.recipeToDisplay.image}
               alt={this.state.recipeToDisplay.title}
             />
