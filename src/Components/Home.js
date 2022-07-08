@@ -6,10 +6,12 @@ import './Home.css';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import { AiOutlineStar, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai';
+import { parseInstructions } from './utility';
 import { withAuth0 } from '@auth0/auth0-react'
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import Profile from './Profile';
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -201,7 +203,9 @@ class Home extends React.Component {
                   this.state.recipeToDisplay.ingredients.map((element, index) => (<li key={index}>{element}</li>))};
               </ul>
             </div>
-            <div>{this.state.recipeToDisplay.instructions}</div>
+            {parseInstructions(this.state.recipeToDisplay.instructions).map((line, index) => (
+              <li key={index}>{line}</li>
+            ))}
             <ul className='modal-icons'>
               <li className='icon'
                 onClick={this.handleAddToCollection}>
