@@ -104,13 +104,13 @@ class Home extends React.Component {
     return (
       <div className='home-container'>
         <div id='home-splash'>
-          <img id="taco" src="../images/fork.png" alt="taco" />
+          <img id="forks" src="../images/2forks.png" alt="forks" />
           <Wheel
             cuisines={this.state.cuisines}
             updateCuisine={this.getSelectedCuisine}
             getSixMeals={this.getSixMeals}
           />
-          <p>Don't know what to cook for dinner? Bored of the same old recipes? Let Meal-Wheel™ take those concerns off your plate!</p>
+          <img id="spoons" src="../images/2spoons.png" alt="spoons" />
         </div>
         <section>
           {
