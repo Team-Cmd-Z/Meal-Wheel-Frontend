@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Footer.css"
+import { Link } from "react-router-dom";
 
 
 
@@ -23,10 +24,10 @@ class Footer extends React.Component {
                 <div className='col'>
                   <h4>Navigation</h4>
                   <ul className='list-unstyled'>
-                    <li>Spin Meal Wheel</li>
-                    <li>About Us</li>
-                    <li>FAQ</li>
-                    <li>Login</li>
+                    <li><Link to="/">Spin Meal Wheel</Link></li>
+                    <li><Link to="/AboutUs">About Us</Link></li>
+                    <li><Link to="/Faq">FAQ</Link></li>
+                    <li><Link to="/SavedRecipes">Saved Recipes</Link></li>
                   </ul>
                 </div>
                 {/* {column3} */}
