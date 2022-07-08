@@ -16,27 +16,12 @@ import Profile from './Components/Profile';
 
 class App extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     cuisines: ['African', 'American', 'Cajun', 'French', 'Italian', 'Jewish', 'Mediterranean', 'Mexican', 'Southern', 'Thai', 'Caribbean', 'Chinese'],
-  //   }
-  // }
-
   render() {
     return (
       <Router>
       <div className="page-container">
       <div className='content-wrap'>
         <Header />
-        {
-          this.props.auth0.isAuthenticated ? <Profile />
-            : <h2>Please Login to your account.</h2>
-        }
-        {
-          this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />
-        }
         <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/AboutUs' element={<AboutUs />}></Route>

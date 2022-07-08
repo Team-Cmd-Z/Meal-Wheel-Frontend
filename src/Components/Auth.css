@@ -1,0 +1,17 @@
+#login-button{
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+#login-button:hover{
+  box-shadow: 1px 0px 10px 0px #000000;
+}
+
+#profile-img{
+  width: 2rem;
+  height: 2rem;
+  margin-left: 1rem;
+}
