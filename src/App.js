@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import './App.css';
@@ -8,6 +8,10 @@ import AboutUs from './Components/AboutUs';
 import Faq from './Components/Faq';
 import SavedRecipes from './Components/SavedRecipes';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { withAuth0 } from '@auth0/auth0-react';
+import LoginButton from './Components/LoginButton';
+import LogoutButton from './Components/LogoutButton';
+import Profile from './Components/Profile';
 
 
 class App extends React.Component {
@@ -26,6 +30,13 @@ class App extends React.Component {
       <div className="page-container">
       <div className='content-wrap'>
         <Header />
+        {
+          this.props.auth0.isAuthenticated ? <Profile />
+            : <h2>Please Login to your account.</h2>
+        }
+        {
+          this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />
+        }
         <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/AboutUs' element={<AboutUs />}></Route>
@@ -40,4 +51,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);
