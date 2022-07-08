@@ -33,11 +33,12 @@ section {
 }
 
 .parent {
+  margin-left: 100px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-row-gap: 50px;
 }
 
 .div1 {
@@ -136,4 +137,3 @@ button {
   width: 300px;
   margin: auto;
 }
-
