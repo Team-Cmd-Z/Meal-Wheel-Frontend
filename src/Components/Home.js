@@ -9,9 +9,6 @@ import Image from 'react-bootstrap/Image';
 import { AiOutlineStar, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai';
 import { parseInstructions } from './utility';
 import { withAuth0 } from '@auth0/auth0-react'
-import LoginButton from './LoginButton';
-import LogoutButton from './LogoutButton';
-import Profile from './Profile';
 
 
 class Home extends React.Component {
@@ -20,7 +17,7 @@ class Home extends React.Component {
 
     this.state = {
       selectedCuisine: null,
-      cuisines: ['African', 'British', 'French', 'Cajun', 'Jewish', 'Nordic', 'Mediterranean', 'Mexican', 'Greek', 'Korean', 'Caribbean', 'Irish'],
+      cuisines: ['Spanish', 'British', 'French', 'Indian', 'Jewish', 'Nordic', 'Mediterranean', 'Mexican', 'Greek', 'Korean', 'Caribbean', 'Thai'],
       mealsArr: [],
       chosenRecipe: {},
       showModal: false,
