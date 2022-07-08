@@ -47,13 +47,20 @@ header h4 {
   font-family: 'Coiny', cursive;
 }
 
-#pitch {
-  margin: auto 300px;
-  text-align: center;
-  letter-spacing: 1pt;
+#head-img {
+  background: url("/public/images/homeSplash.png") no-repeat center;
+  height: 300px;
+  margin-bottom: 20px;
 }
-header {
-  background: url("/public/images/Pattern.png") no-repeat center;
-  height: 200px;
+
+#head-img p {
+  text-align: center;
+  margin: 10px 18vw;
+  color: rgb(255, 255, 255);
+  /* font-family: 'Coiny', cursive; */
+  font-family: 'Comfortaa', cursive;
+  font-size: 18pt;
+  background-color: rgb(233, 233, 233, 0.4);
+  border-radius: 25px;
 }
 
