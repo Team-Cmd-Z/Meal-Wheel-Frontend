@@ -14,7 +14,7 @@ class Header extends React.Component {
       <>
         <Navbar bg='light' variant='light'>
           <Container>
-            <Navbar.Brand href='#home'>LOGO</Navbar.Brand>
+            <img id="logo" src="images/logoicon.png" alt="logo"/>
             <Nav>
               <Link to="/">Home</Link>
               <Link to="/AboutUs">About Us</Link>
@@ -33,7 +33,7 @@ class Header extends React.Component {
         </Navbar>
         <header id="head-img">
           <h4>The Meal Wheel™</h4>
-          <p>Don't know what to cook for dinner? Bored of the same old recipes? Let Meal-Wheel™ take those concerns off your plate!</p>
+          <p>Don't know what to cook for dinner? Bored of the same old recipes? Let Meal-Wheel™ take those concerns off your plate.</p>
         </header>
       </>
     );
