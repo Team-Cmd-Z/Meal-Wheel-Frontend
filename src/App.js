@@ -8,6 +8,10 @@ import AboutUs from './Components/AboutUs';
 import Faq from './Components/Faq';
 import SavedRecipes from './Components/SavedRecipes';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {withAuth0} from '@auth0/auth0-react'
+import LoginButton from './Components/LoginButton';
+import LogoutButton from './Components/LogoutButton';
+// import Profile from './Components/Profile';
 
 
 class App extends React.Component {
@@ -40,4 +44,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);
