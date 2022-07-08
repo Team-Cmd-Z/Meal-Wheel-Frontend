@@ -55,8 +55,9 @@ class Home extends React.Component {
   }
   getSixMeals = async (index) => {
     try {
-      let cuisine = this.state.selectedCuisine;
-      console.log(this.props.auth0.isAuthenticated);
+      let cuisine = this.state.cuisines[index];
+      // console.log(cuisine);
+      // console.log(this.props.auth0.isAuthenticated);
       if (this.props.auth0.isAuthenticated) {
         const res = await this.props.auth0.getIdTokenClaims()
         const jwt = res.__raw
