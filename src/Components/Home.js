@@ -6,10 +6,10 @@ import './Home.css';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import { AiOutlineStar, AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai';
-import {withAuth0} from '@auth0/auth0-react'
+import { withAuth0 } from '@auth0/auth0-react'
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
-// import Profile from './Components/Profile';
+import Profile from './Profile';
 
 class Home extends React.Component {
   constructor(props) {
@@ -61,7 +61,7 @@ class Home extends React.Component {
           method: 'get',
           baseURL: process.env.REACT_APP_SERVER,
           url: `./recipes?cuisine=${cuisine}`,
-          headers: {"Authorization": `Bearer ${jwt}`}
+          headers: { "Authorization": `Bearer ${jwt}` }
         }
         console.log(config)
         let recievedMeals = await axios(config)
@@ -71,10 +71,10 @@ class Home extends React.Component {
         // let url = `${process.env.REACT_APP_SERVER}/recipes?cuisine=${cuisine}`;
         // let receivedMeals = await axios.get(url);
         this.setState({
-        ...this.state,
-        mealsArr: recievedMeals.data,
-      })
-    }
+          ...this.state,
+          mealsArr: recievedMeals.data,
+        })
+      }
     } catch (error) {
       console.log('Oops')
     }
@@ -97,12 +97,6 @@ class Home extends React.Component {
   }
 
   handleAddToCollection = () => {
-    //   title: { type: String, required: true },
-    // imageUrl: { type: String, required: true },
-    // ingredients: { type: Array, required: true },
-    // directions: { type: String, required: true },
-    // notes: { type: String, required: false }
-
     try {
       console.log(this.state.chosenRecipe);
       console.log(this.state.recipeToDisplay);
@@ -133,40 +127,41 @@ class Home extends React.Component {
           />
 
         </div>
-        {
-          this.props.auth0.isAuthenticated?
-            <>
-            <section>
-          {
-            this.state.mealsArr.length ?
-              <>
-                <h1>Try one of these recipes</h1>
-                <div className='parent'>
-                  {this.state.mealsArr.map((recipe, i) => {
-                    return (
-                      <div key={i} className={`div${i + 1}`}>
-                        <RecipeCard
-                          obj={recipe}
-                          saved={false}
-                          handleOnShowModal={this.handleOnShowModal}
-                          mealsArr={this.state.mealsArr}
-                        // handleHide={this.handleOnHideModal}
-                        />
-                      </div>
-                    )
-                  })}
-                </div>
-              </>
-              : <h1>Click SPIN to find recipes</h1>
-          }
-        </section>
-            </>
-          :<h2>Please Login to your account.</h2>
+        {/* {
+          this.props.auth0.isAuthenticated ?
+
+                <>
+                <section>
+              {
+                this.state.mealsArr.length ?
+                  <>
+                    <h1>Try one of these recipes</h1>
+                    <div className='parent'>
+                      {this.state.mealsArr.map((recipe, i) => {
+                        return (
+                          <div key={i} className={`div${i + 1}`}>
+                            <RecipeCard
+                              obj={recipe}
+                              saved={false}
+                              handleOnShowModal={this.handleOnShowModal}
+                              mealsArr={this.state.mealsArr}
+                            // handleHide={this.handleOnHideModal}
+                            />
+                          </div>
+                        )
+                      })}
+                    </div>
+                   </>
+                  : <h1>Click SPIN to find recipes</h1>
+              }
+            </section>
+                </>
+            : <h2>Please Login to your account.</h2>
         }
         {
-          this.props.auth0.isAuthenticated?<LogoutButton/>:<LoginButton/>
-        }
-        {/* <section>
+          this.props.auth0.isAuthenticated ? <LogoutButton /> : <LoginButton />
+        } */}
+        <section>
           {
             this.state.mealsArr.length ?
             <>
@@ -189,7 +184,7 @@ class Home extends React.Component {
             </> 
             : <h1>Click SPIN to find recipes</h1>
             }
-        </section> */}
+        </section>
         <Faq />
         <Modal show={this.state.showModal} onHide={this.handleOnHideModal}>
           <Modal.Header closeButton>
