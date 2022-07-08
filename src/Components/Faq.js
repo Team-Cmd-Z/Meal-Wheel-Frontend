@@ -8,7 +8,6 @@ class Faq extends React.Component {
       <div className="faq-parent">
         <div className="div1">
           <h1>FAQs</h1>
-          <p>Everything you need to know about The Meal Wheel!</p>
         </div>
         <div className="div2">
           <Accordion>

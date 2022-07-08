@@ -12,6 +12,9 @@
   padding-bottom: 0.5rem;
 } */
 
+#logo {
+  width: 60px;
+}
 #login-button{
   background-color: black;
   color: white;
@@ -25,19 +28,18 @@
 a:link {
   padding: 0 20px;
   text-decoration: none;
-  color: green;
+  font-family: 'Comfortaa', cursive;
 }
 
 a:visited {
   color: black;
+  font-family: 'Comfortaa', cursive;
 }
 
 header {
   text-align: center;
   padding: 20px;
   margin: auto;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-weight: 900;
   letter-spacing: 3pt;
 }
 

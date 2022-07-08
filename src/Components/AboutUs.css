@@ -1,5 +1,5 @@
 #aboutSection {
-background-color:var(--secondary-white);
+background-color: aliceblue;
 }
 
 #Pattern {
@@ -17,8 +17,8 @@ background-color:var(--secondary-white);
   top: 150px !important;
   left: 750px;
   color: aliceblue;
-  font-weight: 700;
   font-size: 40px;
+
 }
 
 article {
@@ -46,6 +46,7 @@ h2 {
   width: 100%;
   border-radius: 35%;
   text-align: left;
+
 }
   
 #name {
@@ -62,6 +63,7 @@ h3:not(footer h3) {
   max-width: fit-content;
   margin-left: 25px;
   margin-top: 35px;
+  font-family: 'Comfortaa', cursive;
 }
 
 p:not(footer p){
@@ -73,6 +75,7 @@ p:not(footer p){
   margin-left: 30px;
   margin-right: 10px;
   color:var(--primary-darkBlue);
+  font-family: 'Comfortaa', cursive;
 }
 
 #headshot{
